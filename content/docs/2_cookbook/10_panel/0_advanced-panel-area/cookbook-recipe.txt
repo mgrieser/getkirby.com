@@ -1049,7 +1049,7 @@ panel.plugin("getkirby/products", {
 
 And finally create the view for our single product, in which we basically use almost the same code as in the product list, with the difference that we don't need a loop this time, because we are only dealing with a single product:
 
-```html
+```html "/site/plugins/products/src/components/Products.vue"
 <template>
   <k-inside>
     <k-view>
@@ -1169,7 +1169,7 @@ Our table in the products view could really use some sortable columns. This is a
 
 Let’s go back to our `views/products.php` first to implement the backend logic.
 
-```php
+```php "/site/plugins/products/views/products.php"
 <?php
 
 use Kirby\Products\Product;
@@ -1214,7 +1214,7 @@ The `Products.vue` component needs a few adjustments to make those table headers
 
 Let's start by adding buttons to our `<th>` elements in the table.
 
-```html
+```html "/site/plugins/products/src/components/Products.vue"
 <template>
     ...
       <table class="k-products">
@@ -1251,7 +1251,7 @@ Let's start by adding buttons to our `<th>` elements in the table.
 
 On click, a new `sortBy` method is called and the column name is passed.
 
-```html
+```html "/site/plugins/products/src/components/Products.vue"
 <script>
 import price from "../helpers/price.js";
 
@@ -1281,7 +1281,7 @@ So far the sorting direction is not changed yet. You will only get sorted result
 
 Oh, I almost forgot: we need to adjust our styling a bit to make the buttons look nicer. Add the following to your style block:
 
-```css
+```css "/site/plugins/products/src/components/Products.vue"
 .k-products th button {
   font: inherit;
   text-align: left;
@@ -1295,7 +1295,7 @@ Whenever we click on a sorting button, it would be really nice if the sorting di
 
 Here’s why we needed to send the `sort` and `dir` props from the backend. Let’s have another look at the `sortBy` method:
 
-```html
+```html "/site/plugins/products/src/components/Products.vue"
 <script>
 import price from "../helpers/price.js";
 
@@ -1341,7 +1341,7 @@ So far, the user cannot really see which column is sorted and in which direction
 
 Vue components can have computed properties, which are perfect to create our little arrow:
 
-```html
+```html "/site/plugins/products/src/components/Products.vue"
 <script>
 import price from "../helpers/price.js";
 
@@ -1370,7 +1370,7 @@ The computed property will be recalculated whenever the props of the component c
 
 Now we only need to add it to our template.
 
-```html
+```html "/site/plugins/products/src/components/Products.vue"
 <template>
     ...
       <table class="k-products">
